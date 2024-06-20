@@ -32,6 +32,7 @@ async def command2(message: types.Message):
 async def echo(message: types.Message):
     await message.answer(message.text)
 
+#kjasfvkj
 
 async def main():
     await dp.start_polling(bot)
