@@ -61,9 +61,15 @@ async def command3(message: types.Message):
     )
     await message.answer("Типа повторяющее сообщение", reply_markup=builder.as_markup())
 
+@dp.callback_query(F.data == "echo")
+async
 @dp.message(F.text)
 async def echo(message: types.Message):
     await message.answer(message.text)
+@dp.message(Command(commands=['info']))
+async def command4(message: types.Message):
+    await message.answer("Какая-то информация"
+                         "Ща мы напишем что-нибудь более интересное")
 
 async def main():
     await dp.start_polling(bot)
