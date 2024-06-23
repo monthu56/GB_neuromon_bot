@@ -6,10 +6,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
-from aiogram.utils.formatting import Text, Bold
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-import json
-import aiohttp
 
 API_TOKEN = config.token
 
@@ -50,19 +47,19 @@ async def send_random_value(callback: types.CallbackQuery):
     await callback.answer()
 @dp.message(Command(commands=['shop']))
 async def command2(message: types.Message):
-    await message.answer("Типа список товаров")
-
-@dp.message(Command(commands=['echo']))
-async def command3(message: types.Message):
     builder = InlineKeyboardBuilder()
-    builder.add(types.InlineKeyboardButton(
-        text="Повторить",
-        callback_data="echo")
-    )
-    await message.answer("Типа повторяющее сообщение", reply_markup=builder.as_markup())
+    builder.add(types.InlineKeyboardButton(text="Магазин", callback_data="shop")),
 
-@dp.callback_query(F.data == "echo")
-async
+    await message.answer("Типа список товаров", reply_markup=builder.as_markup())
+
+@dp.callback_query(F.data  ==  "shop")
+async def send_random_value(callback: types.CallbackQuery):
+    await callback.message.answer("Перечень товаров магазина")
+    await callback.answer()
+@dp.callback_query(F.data  ==  "shop")
+async def send_random_value(callback: types.CallbackQuery):
+    await callback.message.answer("Перечень товаров магазина")
+    await callback.answer()
 @dp.message(F.text)
 async def echo(message: types.Message):
     await message.answer(message.text)
@@ -70,7 +67,9 @@ async def echo(message: types.Message):
 async def command4(message: types.Message):
     await message.answer("Какая-то информация"
                          "Ща мы напишем что-нибудь более интересное")
-
+@dp.callback_query(F.data == "info")
+async def send_info(message: types.Message):
+    await message.answer()
 async def main():
     await dp.start_polling(bot)
 
