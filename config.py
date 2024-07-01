@@ -3,3 +3,4 @@ hostDB = "localhost"
 passDB = "443537822"
 portDB = "5433"
 userDB = "postgres"
+adminID = '424141379'

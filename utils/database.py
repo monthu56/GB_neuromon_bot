@@ -10,7 +10,6 @@ con = psycopg2.connect(
         port=config.portDB
     )
 
-# Create a cursor object to interact with the database
 cur = con.cursor()
 
 async def create_table_users():
@@ -22,18 +21,19 @@ async def create_table_users():
     )
     con.commit()
 
-def user_exists(user_id, username):
-    cur.execute("""SELECT * FROM users WHERE user_id = %s OR username = %s;""", (user_id, username))
+def user_exists(user_id, username, number):
+    cur.execute("""SELECT * FROM users WHERE user_id = %s OR username = %s OR number = %s;""", (user_id, username, number))
     return cur.fetchone() is not None
 
-async def add_user(user_id, username):
+
+async def add_user(user_id, username, number):
     try:
-        if user_exists(user_id, username):
+        if user_exists(user_id, username, number):
             print(f"Пользователь {username} уже зарегистрирован")
             return
 
-        cur.execute("INSERT INTO users (user_id, username) VALUES (%s, %s)",
-        (user_id, username))
+        cur.execute("INSERT INTO users (user_id, username, number) VALUES (%s, %s, %s)",
+        (user_id, username, number))
         con.commit()
         print(f"Пользователь {username} успешно зарегистрирован")
     except Exception as e:
