@@ -6,8 +6,7 @@ bt_choise = types.KeyboardButton(text="Выбрать тур")
 bt_register = types.KeyboardButton(text="Зарегистрироваться")
 
 keyboard1=[
-    [bt_choise],
-    [bt_register]
+    [bt_choise]
 ]
 
 kb1 = types.ReplyKeyboardMarkup(keyboard=keyboard1, resize_keyboard=True)
@@ -15,7 +14,7 @@ kb1 = types.ReplyKeyboardMarkup(keyboard=keyboard1, resize_keyboard=True)
 bt_number = types.KeyboardButton(text="Введите Ваш номер телефона")
 
 keyboard2=[
-    [bt_number],
+    [bt_register],
 ]
 
 kb2 = types.ReplyKeyboardMarkup(keyboard=keyboard2, resize_keyboard=True)
