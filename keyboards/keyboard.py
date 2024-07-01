@@ -38,6 +38,7 @@ keyboard4=[
     [bt_island],
     [bt_island2],
     [bt_island3],
+    [bt_island4]
 ]
 
 kb4 = types.ReplyKeyboardMarkup(keyboard=keyboard4, resize_keyboard=True)
