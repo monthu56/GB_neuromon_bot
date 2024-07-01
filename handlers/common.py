@@ -72,4 +72,4 @@ async def process_tour(message: types.Message, state: FSMContext):
     await message.answer(f"Отлично! Вы выбрали {current_state['grade']} тур на {message.text}!")
     await message.answer(f"Приятного путешествия!", reply_markup=types.ReplyKeyboardRemove())
     await bot.send_message(adminID, f"Пользователь {message.from_user.full_name}, с номером {user_data['number']} выбрал {current_state['grade']} тур на {message.text}!")
-    await state.finish()
+    await state.clear()
