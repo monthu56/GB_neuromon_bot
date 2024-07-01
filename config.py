@@ -1,6 +1,6 @@
-token = "7263027762:AAH8-iQdoMik36lNgQrAI-1nJQg00BWQhRw"
+token = "YOUR_TOKEN"
 hostDB = "localhost"
-passDB = "443537822"
-portDB = "5433"
+passDB = "DB_PASS"
+portDB = "DB_PORT"
 userDB = "postgres"
-adminID = '424141379'
+adminID = 'USER_ID'
